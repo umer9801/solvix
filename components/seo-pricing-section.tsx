@@ -143,7 +143,7 @@ export default function SEOPricingSection() {
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-bold text-foreground">
                     ${typeof plan.monthlyPrice === 'number' 
-                      ? (isYearly ? Math.floor(plan.yearlyPrice / 12) : plan.monthlyPrice)
+                      ? (isYearly && typeof plan.yearlyPrice === 'number' ? Math.floor(plan.yearlyPrice / 12) : plan.monthlyPrice)
                       : plan.monthlyPrice}
                   </span>
                   <span className="text-foreground/60 text-lg">CAD/mo</span>

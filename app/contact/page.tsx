@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Image from 'next/image';
 
-export default function Contact() {
+function ContactForm() {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
@@ -324,5 +324,20 @@ export default function Contact() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-foreground/70">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ContactForm />
+    </Suspense>
   );
 }
