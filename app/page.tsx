@@ -406,9 +406,9 @@ export default function Home() {
       </section>
 
       {/* Our Pricing and Plans Header */}
-   
+
       {/* SEO Pricing Section */}
-  
+
 
       {/* Final CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20">
@@ -455,8 +455,8 @@ export default function Home() {
                 <div>
                   <p className="text-foreground/80 leading-relaxed">
                     You may request a refund within <span className="font-semibold text-foreground">7 days period</span> of your purchase. To request a refund, contact our support team at{' '}
-                    <a 
-                      href="mailto:refund@advanceproff.com" 
+                    <a
+                      href="mailto:refund@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
                       refund@advanceproff.com
@@ -479,8 +479,8 @@ export default function Home() {
                 <div>
                   <p className="text-foreground/80 leading-relaxed">
                     Certain products or services may not be eligible for refunds. Please email us at{' '}
-                    <a 
-                      href="mailto:refund@advanceproff.com" 
+                    <a
+                      href="mailto:refund@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
                       refund@advanceproff.com
@@ -504,8 +504,8 @@ export default function Home() {
                 <div>
                   <p className="text-foreground/80 leading-relaxed">
                     If you have questions or need assistance, please contact us at{' '}
-                    <a 
-                      href="mailto:info@advanceproff.com" 
+                    <a
+                      href="mailto:info@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
                       info@advanceproff.com

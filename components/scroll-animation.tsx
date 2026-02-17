@@ -8,10 +8,10 @@ interface ScrollAnimationProps {
   delay?: number;
 }
 
-export default function ScrollAnimation({ 
-  children, 
-  className = '', 
-  delay = 0 
+export default function ScrollAnimation({
+  children,
+  className = '',
+  delay = 0
 }: ScrollAnimationProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -38,8 +38,8 @@ export default function ScrollAnimation({
   }, []);
 
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`opacity-0 ${className}`}
       style={{ animationDelay: `${delay}ms` }}
     >
