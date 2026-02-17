@@ -406,60 +406,9 @@ export default function Home() {
       </section>
 
       {/* Our Pricing and Plans Header */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20">
-        <div className="max-w-5xl mx-auto text-center animate-fade-in-up">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Our <span className="text-primary">Pricing</span> and Plans
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-            Transparent, competitive pricing for all our services. Choose the plan that fits your needs and budget. All prices are in Canadian Dollars (CAD) and 35% below market rates.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-foreground/80 font-medium">No Hidden Fees</span>
-            </div>
-            <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-foreground/80 font-medium">Flexible Plans</span>
-            </div>
-            <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-foreground/80 font-medium">35% Below Market</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+   
       {/* SEO Pricing Section */}
-      <SEOPricingSection />
-
-      {/* Social Media Marketing Pricing Section */}
-      <PricingSection />
-
-      {/* Video Editing Pricing Section */}
-      <VideoPricingSection />
-
-      {/* Website Development Pricing Section */}
-      <WebsitePricingSection />
-
-      {/* AI Solutions Pricing Section */}
-      <AIPricingSection />
-
-      {/* App Development Pricing Section */}
-      <AppPricingSection />
-
-      {/* Shopify Store Pricing Section */}
-      <ShopifyPricingSection />
-
-      {/* n8n Automation Pricing Section */}
-      <AutomationPricingSection />
-
-      {/* LangChain Integration Pricing Section */}
-      <LangChainPricingSection />
-
-      {/* OpenAI Integration Pricing Section */}
-      <OpenAIPricingSection />
+  
 
       {/* Final CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20">
