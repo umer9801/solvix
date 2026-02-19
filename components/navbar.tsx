@@ -107,32 +107,61 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer Overlay */}
       {isOpen && (
-        <div className="md:hidden fixed inset-x-4 top-24 z-50 animate-scale-in">
-          <div className="liquid-glass rounded-3xl overflow-hidden shadow-2xl p-6 space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block text-lg font-bold text-foreground/80 hover:text-primary p-3 rounded-2xl transition-colors hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden animate-in fade-in duration-300"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Mobile Drawer Panel */}
+      <div className={`md:hidden fixed top-[4.5rem] right-4 w-[75vw] max-w-[320px] z-50 transition-all duration-500 origin-top-right ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
+        }`}>
+        <div className="liquid-glass rounded-[2rem] overflow-hidden shadow-[
+-20px_-20px_60px_rgba(255,255,255,0.15),
+-20px_20px_60px_rgba(255,255,255,0.12)
+] border border-white/20 flex flex-col p-8 min-h-[85vh]">
+          <div className="flex-1 flex flex-col pt-1">
+            {[
+              { label: 'Home', href: '/' },
+              { label: 'About', href: '/about' },
+              { label: 'Services', href: '/services' },
+              { label: 'Prices', href: '/pricing' },
+              { label: 'Contact', href: '/contact' }
+            ].map((item, index, array) => (
+              <div key={item.label}>
+                <Link
+                  href={item.href}
+                  className="flex justify-between items-center py-4 text-[clamp(0.9rem,3.5vw,1rem)] font-bold text-foreground/80 hover:text-primary transition-all duration-300 group"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="tracking-tight">{item.label}</span>
+                  {item.label === 'Services' && <ArrowRight size={14} className="text-foreground/30 group-hover:text-primary transition-transform" />}
+                </Link>
+                {index < array.length - 1 && <div className="h-px bg-border/20 w-full" />}
+              </div>
             ))}
-            <div className="pt-4 border-t border-border/40">
-              <Link
-                href="/contact"
-                className="block w-full bg-primary text-primary-foreground text-center py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition-transform"
-                onClick={() => setIsOpen(false)}
-              >
-                Get Started
-              </Link>
+          </div>
+
+          <div className="pt-6 mt-auto border-t border-border/40 space-y-4">
+            <p className="text-[clamp(0.7rem,2.5vw,0.8rem)] font-bold uppercase tracking-[0.2em] text-foreground/30">
+              Follow Us
+            </p>
+            <div className="flex items-center space-x-6 pb-2">
+              <a href="#" className="text-foreground/50 hover:text-primary transition-colors duration-300">
+                <Facebook size={18} strokeWidth={2} />
+              </a>
+              <a href="#" className="text-foreground/50 hover:text-primary transition-colors duration-300">
+                <Instagram size={18} strokeWidth={2} />
+              </a>
+              <a href="#" className="text-foreground/50 hover:text-primary transition-colors duration-300">
+                <MessageCircle size={18} strokeWidth={2} />
+              </a>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
