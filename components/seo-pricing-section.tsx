@@ -10,8 +10,8 @@ export default function SEOPricingSection() {
     {
       name: 'Starter',
       subtitle: '(Best for small businesses getting started with SEO)',
-      monthlyPrice: 1200,
-      yearlyPrice: 12000,
+      monthlyPrice: 840,
+      yearlyPrice: 8400,
       features: [
         'Google Analytics integration',
         'Google Search Console integration',
@@ -33,8 +33,8 @@ export default function SEOPricingSection() {
     {
       name: 'Growth',
       subtitle: '(Ideal for scaling businesses and competitive niches)',
-      monthlyPrice: 2000,
-      yearlyPrice: 20000,
+      monthlyPrice: 1400,
+      yearlyPrice: 14000,
       features: [
         'Google Analytics integration',
         'Google Search Console integration',
@@ -60,8 +60,8 @@ export default function SEOPricingSection() {
     {
       name: 'Enterprise',
       subtitle: '(Built for high-competition, enterprise-level websites)',
-      monthlyPrice: '3500-5000',
-      yearlyPrice: '35000-50000',
+      monthlyPrice: '2450-3500',
+      yearlyPrice: '24500-35000',
       features: [
         'Google Analytics integration',
         'Google Search Console integration',
@@ -109,9 +109,8 @@ export default function SEOPricingSection() {
               className="relative w-16 h-8 bg-primary/30 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
             >
               <div
-                className={`absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-300 ${
-                  isYearly ? 'translate-x-8' : 'translate-x-0'
-                }`}
+                className={`absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-300 ${isYearly ? 'translate-x-8' : 'translate-x-0'
+                  }`}
               />
             </button>
             <span className={`text-lg font-semibold transition-colors duration-300 ${isYearly ? 'text-primary' : 'text-foreground/60'}`}>
@@ -124,11 +123,10 @@ export default function SEOPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -142,7 +140,7 @@ export default function SEOPricingSection() {
                 <p className="text-sm text-foreground/60 mb-4">{plan.subtitle}</p>
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-bold text-foreground">
-                    ${typeof plan.monthlyPrice === 'number' 
+                    ${typeof plan.monthlyPrice === 'number'
                       ? (isYearly && typeof plan.yearlyPrice === 'number' ? Math.floor(plan.yearlyPrice / 12) : plan.monthlyPrice)
                       : plan.monthlyPrice}
                   </span>
@@ -174,11 +172,10 @@ export default function SEOPricingSection() {
 
               <a
                 href={`/contact?service=seo&plan=${encodeURIComponent(plan.name + ' - ' + plan.subtitle)}&price=${encodeURIComponent('$' + (typeof plan.monthlyPrice === 'number' ? plan.monthlyPrice : plan.monthlyPrice) + ' CAD/mo')}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

@@ -12,7 +12,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: '#00FFFF',
+  themeColor: '#000000',
 }
 
 export const metadata: Metadata = {
@@ -28,7 +28,13 @@ export const metadata: Metadata = {
     title: 'Solvix Core - Premium Tech Solutions',
     description: 'Transform your business with cutting-edge technology solutions.',
   },
+  icons: {
+    icon: '/favicon/Solvix.PNG',
+    apple: '/favicon/Solvix.PNG',
+  },
 }
+
+import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({
   children,
@@ -36,8 +42,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${syne.variable}`}>
+      <body className="font-sans antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

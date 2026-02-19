@@ -6,7 +6,7 @@ export default function LangChainPricingSection() {
   const plans = [
     {
       name: 'LangChain Basic',
-      price: '$1,950 CAD',
+      price: '$1,365 CAD',
       subtitle: 'Get started with LangChain',
       features: [
         'LangChain setup & integration',
@@ -19,7 +19,7 @@ export default function LangChainPricingSection() {
     },
     {
       name: 'LangChain Advanced',
-      price: '$3,900 CAD',
+      price: '$2,730 CAD',
       subtitle: 'Advanced LLM applications',
       features: [
         'Custom LangChain agents',
@@ -35,7 +35,7 @@ export default function LangChainPricingSection() {
     },
     {
       name: 'LangChain Enterprise',
-      price: '$7,800+ CAD',
+      price: '$5,460+ CAD',
       subtitle: 'Enterprise LLM solutions',
       features: [
         'Complete LangChain infrastructure',
@@ -68,11 +68,10 @@ export default function LangChainPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -104,11 +103,10 @@ export default function LangChainPricingSection() {
 
               <a
                 href={`/contact?service=langchain&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent(plan.price)}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

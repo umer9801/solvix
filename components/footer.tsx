@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -9,8 +10,13 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">SC</span>
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_15px_rgba(0,255,255,0.2)] border border-primary/30 bg-background/80 p-1 animate-glow">
+                <Image
+                  src="/logo/logo.PNG"
+                  alt="Solvix Core Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-lg font-bold text-foreground">Solvix Core</span>
             </div>
@@ -49,7 +55,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-2">
                 <Phone size={16} className="text-primary mt-1 flex-shrink-0" />
-                <a href="https://wa.me/14378898256" className="text-foreground/70 hover:text-primary transition-colors">+1 (437) 889-8256</a>
+                <a href="https://wa.me/14378898265" className="text-foreground/70 hover:text-primary transition-colors">+1 (437) 889-8265</a>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />

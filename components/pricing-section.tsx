@@ -9,8 +9,8 @@ export default function PricingSection() {
   const plans = [
     {
       name: 'Standard',
-      monthlyPrice: 99,
-      yearlyPrice: 990,
+      monthlyPrice: 69,
+      yearlyPrice: 690,
       features: [
         '10 Posts',
         'Post Every 3 days',
@@ -29,8 +29,8 @@ export default function PricingSection() {
     },
     {
       name: 'Professional',
-      monthlyPrice: 149,
-      yearlyPrice: 1490,
+      monthlyPrice: 104,
+      yearlyPrice: 1040,
       features: [
         '15 Posts',
         'Post Every 2 days',
@@ -51,8 +51,8 @@ export default function PricingSection() {
     },
     {
       name: 'Premium',
-      monthlyPrice: 249,
-      yearlyPrice: 2490,
+      monthlyPrice: 174,
+      yearlyPrice: 1740,
       features: [
         '30 Posts',
         'Post Everyday',
@@ -96,9 +96,8 @@ export default function PricingSection() {
               className="relative w-16 h-8 bg-primary/30 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
             >
               <div
-                className={`absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-300 ${
-                  isYearly ? 'translate-x-8' : 'translate-x-0'
-                }`}
+                className={`absolute top-1 left-1 w-6 h-6 bg-primary rounded-full transition-transform duration-300 ${isYearly ? 'translate-x-8' : 'translate-x-0'
+                  }`}
               />
             </button>
             <span className={`text-lg font-semibold transition-colors duration-300 ${isYearly ? 'text-primary' : 'text-foreground/60'}`}>
@@ -111,11 +110,10 @@ export default function PricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -153,11 +151,10 @@ export default function PricingSection() {
 
               <a
                 href={`/contact?service=marketing&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent('$' + (isYearly ? Math.floor(plan.yearlyPrice / 12) : plan.monthlyPrice) + ' CAD/mo')}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

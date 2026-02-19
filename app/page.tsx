@@ -58,7 +58,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden premium-gradient">
         <div className="absolute inset-0">
           <Image
             src="/hero-main.jpg"
@@ -73,9 +73,9 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in-down space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight silver-gradient">
               Transform Your Business with{' '}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="block mt-2">
                 Premium Tech Solutions
               </span>
             </h1>
@@ -105,9 +105,10 @@ export default function Home() {
       </section>
 
       {/* Partnership Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-secondary/50 border-y border-border">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary/2 h-px top-0" />
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 animate-fade-in-up">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 animate-fade-in-up liquid-glass p-8 md:p-12 rounded-[2.5rem] border border-primary/10 shadow-3xl">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
                 <Shield className="w-6 h-6 text-primary" />
@@ -126,13 +127,13 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-24 animate-fade-in-up">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 silver-gradient leading-tight">
               Why Choose Solvix Core?
             </h2>
-            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
+            <p className="text-foreground/50 text-xl max-w-2xl mx-auto leading-relaxed">
               We deliver exceptional results through innovation, expertise, and a commitment to your success.
             </p>
           </div>
@@ -157,12 +158,12 @@ export default function Home() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-primary/10 animate-fade-in-up"
+                className="obsidian-card rounded-[--radius] p-8 hover:border-primary/40 transition-all duration-500 transform hover:-translate-y-2 group animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-4xl font-bold text-primary/30 mb-4">{item.number}</div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-                <p className="text-foreground/70">{item.description}</p>
+                <div className="text-5xl font-black text-primary/5 mb-6 group-hover:text-primary/10 transition-colors duration-500">{item.number}</div>
+                <h3 className="text-2xl font-bold text-foreground mb-4 silver-gradient">{item.title}</h3>
+                <p className="text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors">{item.description}</p>
               </div>
             ))}
           </div>
@@ -170,13 +171,13 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 premium-gradient">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-20 animate-fade-in-up">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 silver-gradient">
               Our Services
             </h2>
-            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
+            <p className="text-foreground/50 text-xl max-w-2xl mx-auto">
               Comprehensive solutions across all aspects of modern technology.
             </p>
           </div>
@@ -185,17 +186,17 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group cursor-pointer animate-scale-in"
+                className="liquid-glass rounded-[--radius] p-8 hover:bg-white/5 transition-all duration-500 group cursor-pointer animate-scale-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className="text-primary mb-4 group-hover:scale-125 transition-transform duration-300">
+                <div className="text-primary mb-6 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_8px_rgba(var(--primary),0.3)]">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                <p className="text-foreground/70 mb-6">{service.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-foreground/60 mb-6 line-clamp-2">{service.description}</p>
                 <Link
                   href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="inline-flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300 font-semibold"
+                  className="inline-flex items-center gap-2 text-primary/80 hover:text-primary hover:gap-4 transition-all duration-300 font-bold"
                 >
                   Learn More <ArrowRight size={16} />
                 </Link>
@@ -459,7 +460,7 @@ export default function Home() {
                       href="mailto:refund@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
-                      refund@advanceproff.com
+                      info@solvixcore.com
                     </a>
                   </p>
                 </div>
@@ -483,7 +484,7 @@ export default function Home() {
                       href="mailto:refund@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
-                      refund@advanceproff.com
+                      info@solvixcore.com
                     </a>
                     {' '}for specific exclusions.
                   </p>
@@ -508,7 +509,7 @@ export default function Home() {
                       href="mailto:info@advanceproff.com"
                       className="text-primary hover:text-primary/80 font-semibold underline transition-colors duration-300"
                     >
-                      info@advanceproff.com
+                      info@solvixcore.com
                     </a>
                   </p>
                 </div>

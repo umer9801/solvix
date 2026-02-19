@@ -6,7 +6,7 @@ export default function AutomationPricingSection() {
   const plans = [
     {
       name: 'n8n Starter',
-      price: '$1,300 CAD',
+      price: '$910 CAD',
       subtitle: 'Automate your basic workflows',
       features: [
         'n8n setup & configuration',
@@ -18,7 +18,7 @@ export default function AutomationPricingSection() {
     },
     {
       name: 'n8n Professional',
-      price: '$2,600 CAD',
+      price: '$1,820 CAD',
       subtitle: 'Advanced automation solutions',
       features: [
         'Custom n8n deployment',
@@ -33,7 +33,7 @@ export default function AutomationPricingSection() {
     },
     {
       name: 'n8n Enterprise',
-      price: '$5,200+ CAD',
+      price: '$3,640+ CAD',
       subtitle: 'Complete automation infrastructure',
       features: [
         'Enterprise n8n setup',
@@ -65,11 +65,10 @@ export default function AutomationPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -101,11 +100,10 @@ export default function AutomationPricingSection() {
 
               <a
                 href={`/contact?service=n8n&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent(plan.price)}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

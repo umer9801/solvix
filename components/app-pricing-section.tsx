@@ -6,7 +6,7 @@ export default function AppPricingSection() {
   const plans = [
     {
       name: 'Mobile App MVP',
-      price: '$6,500',
+      price: '$4,550',
       subtitle: 'Launch your app idea quickly',
       features: [
         'iOS or Android (single platform)',
@@ -19,7 +19,7 @@ export default function AppPricingSection() {
     },
     {
       name: 'Cross-Platform App',
-      price: '$11,700',
+      price: '$8,190',
       subtitle: 'Reach both iOS & Android users',
       features: [
         'iOS & Android apps',
@@ -35,7 +35,7 @@ export default function AppPricingSection() {
     },
     {
       name: 'Enterprise App',
-      price: '$19,500+',
+      price: '$13,650+',
       subtitle: 'Full-featured enterprise solution',
       features: [
         'iOS & Android apps',
@@ -68,11 +68,10 @@ export default function AppPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -104,11 +103,10 @@ export default function AppPricingSection() {
 
               <a
                 href={`/contact?service=app&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent(plan.price)}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

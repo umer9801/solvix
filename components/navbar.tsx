@@ -3,14 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, Facebook, Instagram, Menu, MessageCircle, X } from 'lucide-react';
+import { ArrowRight, Facebook, Instagram, Menu, MessageCircle, Moon, Sun, X } from 'lucide-react';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -22,25 +27,6 @@ const Navbar = () => {
     setIsOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-      }
-    };
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleEscape);
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener('keydown', handleEscape);
-    };
-  }, [isOpen]);
-
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
@@ -48,152 +34,105 @@ const Navbar = () => {
     { label: 'Pricing', href: '/pricing' },
   ];
 
-  const mobileNavItems = [...navItems, { label: 'Contact', href: '/contact' }];
-
-  const socialLinks = [
-    { label: 'Facebook', icon: Facebook },
-    { label: 'Instagram', icon: Instagram },
-    { label: 'WhatsApp', icon: MessageCircle },
-  ];
-
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
-        ? 'bg-background/95 border-b border-border backdrop-blur-lg'
-        : 'bg-background/80 backdrop-blur-md border-b border-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'h-16 mt-4 mx-4' : 'h-20 bg-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop */}
-        <div className="hidden md:flex justify-between items-center h-20">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full transition-all duration-500 ${scrolled ? 'liquid-glass rounded-2xl shadow-2xl' : ''
+        }`}>
+        <div className="flex justify-between items-center h-full">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transition-all duration-300">
-              <span className="text-primary-foreground font-bold text-lg">SC</span>
+            <div className="relative w-10 h-10 transition-all duration-300 transform group-hover:scale-110 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(0,255,255,0.3)] border border-primary/30 bg-background/80 p-1.5 animate-glow">
+              <Image
+                src="/logo/logo.PNG"
+                alt="Solvix Core Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-foreground hidden sm:inline">
+            <span className="text-xl font-bold text-foreground hidden sm:inline silver-gradient">
               Solvix Core
             </span>
           </Link>
 
+          {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 font-medium text-sm"
+                className="text-foreground/70 hover:text-primary transition-all duration-300 font-bold text-sm tracking-wide"
               >
                 {item.label}
               </Link>
             ))}
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="p-2.5 rounded-xl bg-secondary/30 hover:bg-secondary/60 text-foreground/70 hover:text-primary transition-all duration-300 border border-border/40"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            )}
             <Link
               href="/contact"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg font-medium transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-7 py-2.5 rounded-xl font-bold transition-all duration-500 shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5"
             >
               Get Started
             </Link>
           </div>
-        </div>
 
-        {/* Mobile top bar */}
-        <div className="md:hidden py-3">
-          <div
-            className={`relative overflow-hidden rounded-[1.25rem] border transition-all duration-300 ${scrolled
-              ? 'border-border/70 bg-card/95'
-              : 'border-border/40 bg-card/75'
-              } backdrop-blur-xl`}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/12 via-transparent to-primary/5" />
-            <div className="relative flex h-14 items-center justify-between px-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">
-                    SC
-                  </span>
-                </div>
-                <span className="text-sm font-semibold tracking-[0.18em] text-foreground/90 uppercase">
-                  Solvix Core
-                </span>
-              </Link>
+          {/* Mobile Button */}
+          <div className="md:hidden flex items-center gap-3">
+            {mounted && (
               <button
-                onClick={() => setIsOpen((prev) => !prev)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-background/60 text-foreground/90 transition hover:border-primary/60 hover:text-primary"
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={isOpen}
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 liquid-glass text-foreground/90 transition hover:border-primary/40 shadow-xl"
+                aria-label="Toggle theme"
               >
-                {isOpen ? <X size={22} /> : <Menu size={22} />}
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-            </div>
+            )}
+            <button
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 liquid-glass text-foreground/90 transition hover:border-primary/40 shadow-xl"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Overlay */}
-      <button
-        type="button"
-        className={`md:hidden fixed inset-0 z-40 bg-background/40 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-          }`}
-        onClick={() => setIsOpen(false)}
-        aria-hidden={!isOpen}
-      />
-
-      {/* Mobile Modal - NO SHADOW */}
-      <div
-        className={`md:hidden fixed top-[4.95rem] right-4 w-[50vw] z-50 min-h-[70vh] rounded-[1.75rem] border border-border/70 bg-card/95 px-6 py-5 shadow-[-20px_0_50px_-15px_hsla(180,90%,45%,0.3),0_-20px_50px_-15px_hsla(180,90%,45%,0.3),0_20px_50px_-15px_hsla(180,90%,45%,0.3)]
-         backdrop-blur-2xl transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'pointer-events-none -translate-y-4 opacity-0'
-          }`}
-      >
-        <button
-          type="button"
-          onClick={() => setIsOpen(false)}
-          className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 transition hover:border-primary/60 hover:text-primary"
-          aria-label="Close menu"
-        >
-          <X size={16} />
-        </button>
-
-        <div className="flex min-h-[calc(70vh-2.5rem)] flex-col pt-2">
-          <div className="space-y-1">
-            {mobileNavItems.map((item) => (
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-x-4 top-24 z-50 animate-scale-in">
+          <div className="liquid-glass rounded-3xl overflow-hidden shadow-2xl p-6 space-y-4">
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="group flex items-center justify-between border-b border-border/60 py-4 text-[1.12rem] font-medium text-foreground/85 transition-colors duration-300 hover:text-primary"
+                className="block text-lg font-bold text-foreground/80 hover:text-primary p-3 rounded-2xl transition-colors hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                <span>{item.label}</span>
-                {item.label === 'Services' && (
-                  <ArrowRight
-                    size={18}
-                    className="text-foreground/55 transition-colors group-hover:text-primary"
-                  />
-                )}
+                {item.label}
               </Link>
             ))}
-          </div>
-
-          <div className="mt-auto border-t border-border/60 pt-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">
-              Follow Us
-            </p>
-            <div className="mt-4 flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <button
-                    key={social.label}
-                    type="button"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-background/55 text-foreground/75 transition-all hover:border-primary/60 hover:text-primary"
-                    aria-label={social.label}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Icon size={18} />
-                  </button>
-                );
-              })}
+            <div className="pt-4 border-t border-border/40">
+              <Link
+                href="/contact"
+                className="block w-full bg-primary text-primary-foreground text-center py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition-transform"
+                onClick={() => setIsOpen(false)}
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

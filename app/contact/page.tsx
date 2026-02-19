@@ -25,14 +25,14 @@ function ContactForm() {
     const service = searchParams.get('service');
     const plan = searchParams.get('plan');
     const price = searchParams.get('price');
-    
+
     if (service) {
       setFormData((prev) => ({
         ...prev,
         service: service,
       }));
     }
-    
+
     // If plan and price are provided, add them to the message
     if (plan && price) {
       const planMessage = `I'm interested in the ${plan} plan (${price}).`;
@@ -110,8 +110,8 @@ function ContactForm() {
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: 'WhatsApp',
-                content: '+1 (437) 889-8256',
-                link: 'https://wa.me/14378898256',
+                content: '+1 (437) 889-8265',
+                link: 'https://wa.me/14378898265',
               },
               {
                 icon: <MapPin className="w-8 h-8" />,
@@ -222,7 +222,7 @@ function ContactForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary transition-colors duration-300"
-                  placeholder="+1 (437) 889-8256"
+                  placeholder="+1 (437) 889-8265"
                 />
               </div>
               <div>
@@ -311,7 +311,7 @@ function ContactForm() {
               Email Us
             </a>
             <a
-              href="https://wa.me/14378898256"
+              href="https://wa.me/14378898265"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105"

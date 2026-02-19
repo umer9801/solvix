@@ -6,7 +6,7 @@ export default function AIPricingSection() {
   const plans = [
     {
       name: 'AI Starter',
-      price: '$1,950',
+      price: '$1,365',
       subtitle: 'Perfect for small businesses exploring AI',
       features: [
         'AI consultation & strategy session',
@@ -19,7 +19,7 @@ export default function AIPricingSection() {
     },
     {
       name: 'AI Professional',
-      price: '$3,900',
+      price: '$2,730',
       subtitle: 'Advanced AI solutions for growing businesses',
       features: [
         'Custom AI model development',
@@ -35,7 +35,7 @@ export default function AIPricingSection() {
     },
     {
       name: 'AI Enterprise',
-      price: '$7,800+',
+      price: '$5,460+',
       subtitle: 'Full-scale AI transformation',
       features: [
         'Complete AI infrastructure setup',
@@ -67,11 +67,10 @@ export default function AIPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -103,11 +102,10 @@ export default function AIPricingSection() {
 
               <a
                 href={`/contact?service=ai&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent(plan.price)}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>

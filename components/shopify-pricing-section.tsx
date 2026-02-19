@@ -6,7 +6,7 @@ export default function ShopifyPricingSection() {
   const plans = [
     {
       name: 'Shopify Starter',
-      price: '$2,600 CAD',
+      price: '$1,820 CAD',
       subtitle: 'Perfect for new online stores',
       features: [
         'Shopify store setup & configuration',
@@ -20,7 +20,7 @@ export default function ShopifyPricingSection() {
     },
     {
       name: 'Shopify Professional',
-      price: '$4,550 CAD',
+      price: '$3,185 CAD',
       subtitle: 'Complete e-commerce solution',
       features: [
         'Custom Shopify theme development',
@@ -36,7 +36,7 @@ export default function ShopifyPricingSection() {
     },
     {
       name: 'Shopify Enterprise',
-      price: '$7,800+ CAD',
+      price: '$5,460+ CAD',
       subtitle: 'Full-scale e-commerce platform',
       features: [
         'Shopify Plus setup (if needed)',
@@ -69,11 +69,10 @@ export default function ShopifyPricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${
-                plan.popular
+              className={`bg-card border rounded-xl p-8 transition-all duration-300 hover:shadow-xl animate-scale-in relative ${plan.popular
                   ? 'border-primary shadow-lg shadow-primary/20 scale-105'
                   : 'border-border hover:border-primary/50'
-              }`}
+                }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
@@ -105,11 +104,10 @@ export default function ShopifyPricingSection() {
 
               <a
                 href={`/contact?service=shopify&plan=${encodeURIComponent(plan.name)}&price=${encodeURIComponent(plan.price)}`}
-                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  plan.popular
+                className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${plan.popular
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/50'
                     : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30'
-                }`}
+                  }`}
               >
                 Get Started
               </a>
