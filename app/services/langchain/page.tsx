@@ -19,7 +19,7 @@ export default function LangChainService() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/hero-main.jpg"
+            src="/backgrounds/langchain.webp"
             alt="LangChain"
             fill
             className="object-cover brightness-40"
@@ -74,7 +74,7 @@ export default function LangChainService() {
             </div>
             <div className="animate-fade-in-right">
               <Image
-                src="/service-ai.jpg"
+                src="/backgrounds/langchain.webp"
                 alt="LangChain"
                 width={500}
                 height={400}

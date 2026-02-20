@@ -19,7 +19,7 @@ export default function WebDevService() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/hero-main.jpg"
+            src="/backgrounds/Website Development.webp"
             alt="Web Development"
             fill
             className="object-cover brightness-40"
@@ -74,7 +74,7 @@ export default function WebDevService() {
             </div>
             <div className="animate-fade-in-right">
               <Image
-                src="/service-ai.jpg"
+                src="/backgrounds/Website Development.webp"
                 alt="Web Development"
                 width={500}
                 height={400}

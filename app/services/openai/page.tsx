@@ -19,7 +19,7 @@ export default function OpenAIService() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/hero-main.jpg"
+            src="/backgrounds/open ai agent sdk.webp"
             alt="OpenAI Agent SDK"
             fill
             className="object-cover brightness-40"
@@ -74,8 +74,8 @@ export default function OpenAIService() {
             </div>
             <div className="animate-fade-in-right">
               <Image
-                src="/service-ai.jpg"
-                alt="OpenAI Agent"
+                src="/backgrounds/open ai agent sdk.webp"
+                alt="OpenAI Agents"
                 width={500}
                 height={400}
                 className="rounded-xl shadow-2xl shadow-primary/20"

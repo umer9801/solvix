@@ -19,7 +19,7 @@ export default function ShopifyService() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/hero-main.jpg"
+            src="/backgrounds/shopify.webp"
             alt="Shopify Design"
             fill
             className="object-cover brightness-40"
@@ -74,7 +74,7 @@ export default function ShopifyService() {
             </div>
             <div className="animate-fade-in-right">
               <Image
-                src="/service-ai.jpg"
+                src="/backgrounds/shopify.webp"
                 alt="Shopify"
                 width={500}
                 height={400}

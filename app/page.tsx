@@ -25,31 +25,43 @@ export default function Home() {
       icon: <Brain className="w-8 h-8" />,
       title: 'AI Solutions',
       description: 'Custom AI implementations powered by OpenAI, LangChain, and advanced ML models.',
+      image: '/backgrounds/open ai agent sdk.webp',
+      link: '/services/ai-solutions'
     },
     {
       icon: <Zap className="w-8 h-8" />,
       title: 'n8n Automation',
       description: 'Workflow automation and integration platform for seamless business processes.',
+      image: '/backgrounds/n8n-automate.webp',
+      link: '/services/n8n'
     },
     {
       icon: <Code className="w-8 h-8" />,
       title: 'Web Development',
       description: 'Custom websites and applications built with modern tech stack.',
+      image: '/backgrounds/Website Development.webp',
+      link: '/services/web-development'
     },
     {
       icon: <Palette className="w-8 h-8" />,
       title: 'Content Creation',
       description: 'High-quality content strategy and creation for your brand.',
+      image: '/backgrounds/content creation.webp',
+      link: '/services/content'
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: 'Marketing & SEO',
       description: 'Data-driven marketing strategies and SEO optimization.',
+      image: '/backgrounds/digital marketing and seo.webp',
+      link: '/services/marketing-seo'
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: 'App Development',
       description: 'Native and cross-platform mobile applications.',
+      image: '/backgrounds/app development.webp',
+      link: '/services/app-dev'
     },
   ];
 
@@ -60,13 +72,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden premium-gradient">
         <div className="absolute inset-0">
-          <Image
-            src="/hero-main.jpg"
-            alt="Hero background"
-            fill
-            className="object-cover brightness-40"
-            priority
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            suppressHydrationWarning={true}
+            className="absolute inset-0 w-full h-full object-cover brightness-40"
+          >
+            <source src="/Videos/hero Section(1).mp4" type="video/mp4" />
+          </video>
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/50 to-background" />
         </div>
@@ -161,7 +176,7 @@ export default function Home() {
                 className="obsidian-card rounded-[--radius] p-8 hover:border-primary/40 transition-all duration-500 transform hover:-translate-y-2 group animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-5xl font-black text-primary/5 mb-6 group-hover:text-primary/10 transition-colors duration-500">{item.number}</div>
+                <div className="text-5xl font-black text-primary/20 mb-6 group-hover:text-primary/10 transition-colors duration-500">{item.number}</div>
                 <h3 className="text-2xl font-bold text-foreground mb-4 silver-gradient">{item.title}</h3>
                 <p className="text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors">{item.description}</p>
               </div>
@@ -171,8 +186,17 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 premium-gradient">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/backgrounds/services.webp"
+            alt="Services background"
+            fill
+            className="object-cover brightness-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-20 animate-fade-in-up">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 silver-gradient">
               Our Services
@@ -186,20 +210,31 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="liquid-glass rounded-[--radius] p-8 hover:bg-white/5 transition-all duration-500 group cursor-pointer animate-scale-in"
+                className="liquid-glass rounded-[--radius] overflow-hidden hover:bg-white/5 transition-all duration-500 group cursor-pointer animate-scale-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className="text-primary mb-6 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_8px_rgba(var(--primary),0.3)]">
-                  {service.icon}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                  <div className="absolute bottom-4 left-6 text-primary group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_8px_rgba(var(--primary),0.3)]">
+                    {service.icon}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="text-foreground/60 mb-6 line-clamp-2">{service.description}</p>
-                <Link
-                  href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="inline-flex items-center gap-2 text-primary/80 hover:text-primary hover:gap-4 transition-all duration-300 font-bold"
-                >
-                  Learn More <ArrowRight size={16} />
-                </Link>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-foreground/60 mb-6 line-clamp-2">{service.description}</p>
+                  <Link
+                    href={service.link}
+                    className="inline-flex items-center gap-2 text-primary/80 hover:text-primary hover:gap-4 transition-all duration-300 font-bold"
+                  >
+                    Learn More <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

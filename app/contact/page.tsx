@@ -77,7 +77,7 @@ function ContactForm() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-contact.jpg"
-            alt="Contact hero"
+            alt=""
             fill
             className="object-cover brightness-40"
           />

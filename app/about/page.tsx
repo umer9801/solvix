@@ -17,12 +17,16 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-about.jpg"
-            alt="About hero"
-            fill
-            className="object-cover brightness-40"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            suppressHydrationWarning={true}
+            className="absolute inset-0 w-full h-full object-cover brightness-40"
+          >
+            <source src="/Videos/About Section.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
         </div>
 

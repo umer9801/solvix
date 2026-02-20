@@ -16,6 +16,7 @@ const AllServices = [
     description: 'Powerful workflow automation and integration platform',
     icon: <Zap className="w-10 h-10" />,
     color: 'from-blue-500 to-cyan-500',
+    image: '/backgrounds/n8n-automate.webp'
   },
   {
     id: 'langchain',
@@ -23,6 +24,7 @@ const AllServices = [
     description: 'Advanced language model chains and AI workflows',
     icon: <Brain className="w-10 h-10" />,
     color: 'from-purple-500 to-pink-500',
+    image: '/backgrounds/langchain.webp'
   },
   {
     id: 'openai',
@@ -30,6 +32,7 @@ const AllServices = [
     description: 'Intelligent agents powered by OpenAI models',
     icon: <Lightbulb className="w-10 h-10" />,
     color: 'from-green-500 to-emerald-500',
+    image: '/backgrounds/open ai agent sdk.webp'
   },
   {
     id: 'content',
@@ -37,6 +40,7 @@ const AllServices = [
     description: 'Strategic content development for your brand',
     icon: <Palette className="w-10 h-10" />,
     color: 'from-orange-500 to-red-500',
+    image: '/backgrounds/content creation.webp'
   },
   {
     id: 'web-development',
@@ -44,6 +48,7 @@ const AllServices = [
     description: 'Tailored web solutions for your business',
     icon: <Code className="w-10 h-10" />,
     color: 'from-blue-500 to-indigo-500',
+    image: '/backgrounds/Website Development.webp'
   },
   {
     id: 'app-dev',
@@ -51,6 +56,7 @@ const AllServices = [
     description: 'Native and cross-platform mobile & web apps',
     icon: <Smartphone className="w-10 h-10" />,
     color: 'from-indigo-500 to-purple-500',
+    image: '/backgrounds/app development.webp'
   },
   {
     id: 'ai-solutions',
@@ -58,6 +64,7 @@ const AllServices = [
     description: 'Custom AI implementations and machine learning',
     icon: <Brain className="w-10 h-10" />,
     color: 'from-cyan-500 to-blue-500',
+    image: '/backgrounds/services.webp'
   },
   {
     id: 'shopify',
@@ -65,6 +72,7 @@ const AllServices = [
     description: 'Premium e-commerce store setup and customization',
     icon: <Store className="w-10 h-10" />,
     color: 'from-green-500 to-teal-500',
+    image: '/backgrounds/shopify.webp'
   },
   {
     id: 'marketing-seo',
@@ -72,6 +80,7 @@ const AllServices = [
     description: 'Data-driven marketing and search optimization',
     icon: <TrendingUp className="w-10 h-10" />,
     color: 'from-pink-500 to-rose-500',
+    image: '/backgrounds/digital marketing and seo.webp'
   },
 ];
 
@@ -83,12 +92,16 @@ export default function Services() {
       {/* Hero Section */}
       <section className="relative py-32 px-4 sm:px-6 lg:px-8 pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-main.jpg"
-            alt="Services hero"
-            fill
-            className="object-cover brightness-30"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            suppressHydrationWarning={true}
+            className="absolute inset-0 w-full h-full object-cover brightness-30"
+          >
+            <source src="/Videos/hero Section(1).mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
         </div>
 
@@ -111,16 +124,27 @@ export default function Services() {
             {AllServices.map((service, index) => (
               <Link key={service.id} href={`/services/${service.id}`}>
                 <div
-                  className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 group h-full cursor-pointer hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 transform animate-fade-in-up"
+                  className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary transition-all duration-300 group h-full cursor-pointer hover:shadow-2xl hover:shadow-primary/20 hover:scale-105 transform animate-fade-in-up"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="text-primary mb-6 group-hover:scale-125 transition-transform duration-300">
-                    {service.icon}
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                    <div className="absolute bottom-4 left-6 text-primary group-hover:scale-125 transition-transform duration-300">
+                      {service.icon}
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-foreground/70 mb-6">{service.description}</p>
-                  <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-4 transition-all duration-300">
-                    Learn More <ArrowRight size={18} />
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
+                    <p className="text-foreground/70 mb-6">{service.description}</p>
+                    <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-4 transition-all duration-300">
+                      Learn More <ArrowRight size={18} />
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -153,7 +177,7 @@ export default function Services() {
                 className="bg-card border border-border rounded-xl p-6 animate-fade-in-up relative"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-3xl font-bold text-primary/20 mb-4">{item.step}</div>
+                <div className="text-3xl font-bold text-primary/40 mb-4">{item.step}</div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-foreground/70">{item.description}</p>
                 {index < 3 && (

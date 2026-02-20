@@ -19,7 +19,7 @@ export default function N8nService() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/hero-main.jpg"
+            src="/backgrounds/n8n-automate.webp"
             alt="n8n automation"
             fill
             className="object-cover brightness-40"
@@ -72,7 +72,7 @@ export default function N8nService() {
             </div>
             <div className="animate-fade-in-right">
               <Image
-                src="/service-ai.jpg"
+                src="/backgrounds/n8n-automate.webp"
                 alt="n8n automation"
                 width={500}
                 height={400}
