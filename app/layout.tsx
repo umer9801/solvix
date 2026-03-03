@@ -1,0 +1,142 @@
+import React from "react"
+import type { Metadata, Viewport } from 'next'
+import { Inter, Syne } from 'next/font/google'
+
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#000000',
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://solvixcore.com'),
+  title: {
+    default: 'Solvix Core - AI Automation, Web Development & Digital Services Canada',
+    template: '%s | Solvix Core'
+  },
+  description: 'Leading Canadian tech agency specializing in AI automation services, custom web development, mobile app development, LangChain AI solutions, and digital marketing. Serving businesses across Canada and globally.',
+  generator: 'Solvix Core',
+  applicationName: 'Solvix Core',
+  keywords: [
+    // AI & Automation
+    'ai automation services canada',
+    'ai solutions for businesses',
+    'langchain development services',
+    'ai chatbot development canada',
+    'custom ai development',
+    'machine learning solutions',
+    // Web Development
+    'web development company canada',
+    'custom website development',
+    'next.js web development',
+    'ecommerce website development canada',
+    'progressive web apps',
+    // Mobile Apps
+    'mobile app development canada',
+    'ios app development company',
+    'android app developers',
+    'cross platform app development',
+    // SEO & Marketing
+    'seo services canada',
+    'digital marketing agency canada',
+    'local seo company canada',
+    'technical seo services',
+    // Other Services
+    'crm development canada',
+    'content creation services',
+    'video editing services canada',
+    'shopify development',
+    'startup software development'
+  ],
+  authors: [{ name: 'Solvix Core', url: 'https://solvixcore.com' }],
+  creator: 'Solvix Core',
+  publisher: 'Solvix Core',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    alternateLocale: ['en_US', 'fr_CA'],
+    url: 'https://solvixcore.com',
+    siteName: 'Solvix Core',
+    title: 'Solvix Core - AI Automation & Web Development Services Canada',
+    description: 'Transform your business with AI automation, custom web development, and digital solutions. Trusted Canadian tech partner for startups and enterprises.',
+    images: [
+      {
+        url: '/favicon/Solvix.PNG',
+        width: 1200,
+        height: 630,
+        alt: 'Solvix Core - Premium Tech Solutions'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Solvix Core - AI Automation & Web Development Canada',
+    description: 'Leading Canadian tech agency for AI automation, web development, and digital services.',
+    images: ['/favicon/Solvix.PNG'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon/Solvix.PNG',
+    apple: '/favicon/Solvix.PNG',
+  },
+  verification: {
+    // Add your verification codes here
+    google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+}
+
+import { ThemeProvider } from "@/components/theme-provider"
+import { generateOrganizationSchema } from '@/lib/seo-utils'
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  const organizationSchema = generateOrganizationSchema();
+
+  return (
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${syne.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
+      <body className="font-sans antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
