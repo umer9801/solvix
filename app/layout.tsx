@@ -111,6 +111,7 @@ export const metadata: Metadata = {
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { generateOrganizationSchema } from '@/lib/seo-utils'
+import { Toaster } from "sonner"
 
 export default function RootLayout({
   children,
@@ -135,6 +136,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster position="bottom-right" richColors />
         </ThemeProvider>
       </body>
     </html>

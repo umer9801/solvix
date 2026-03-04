@@ -4,8 +4,9 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -43,6 +44,8 @@ function ContactForm() {
     }
   }, [searchParams]);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -51,21 +54,42 @@ function ContactForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: '',
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        toast.success(data.message || "Message sent successfully!");
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        toast.error(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("An error occurred. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -105,27 +129,31 @@ function ContactForm() {
                 icon: <Mail className="w-8 h-8" />,
                 title: 'Email',
                 content: 'info@solvixcore.com',
-                link: 'mailto:info@solvixcore.com',
+                onClick: () => {
+                  navigator.clipboard.writeText('info@solvixcore.com');
+                  toast.success('Email copied to clipboard!');
+                },
               },
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: 'WhatsApp',
                 content: '+1 (437) 889-8265',
-                link: 'https://wa.me/14378898265',
+                onClick: () => {
+                  navigator.clipboard.writeText('+1 (437) 889-8265');
+                  toast.success('Phone number copied to clipboard!');
+                },
               },
               {
                 icon: <MapPin className="w-8 h-8" />,
                 title: 'Address',
                 content: 'Suite 104 - 2 Gurdwara Road, Ottawa, ON K2E 1A2, Canada',
-                link: '#',
+                onClick: null,
               },
             ].map((info, index) => (
-              <a
+              <div
                 key={index}
-                href={info.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 cursor-pointer animate-fade-in-up group"
+                onClick={info.onClick || undefined}
+                className={`bg-card border border-border rounded-xl p-8 hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 animate-fade-in-up group ${info.onClick ? 'cursor-pointer' : ''}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="text-primary mb-4 group-hover:scale-125 transition-transform duration-300">
@@ -133,7 +161,7 @@ function ContactForm() {
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{info.title}</h3>
                 <p className="text-foreground/70">{info.content}</p>
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -286,9 +314,14 @@ function ContactForm() {
 
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-primary/50"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-primary/50 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Send Message <Send size={20} />
+              {isSubmitting ? (
+                <>Sending... <Loader2 className="animate-spin" size={20} /></>
+              ) : (
+                <>Send Message <Send size={20} /></>
+              )}
             </button>
           </form>
         </div>

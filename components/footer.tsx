@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 const Footer = () => {
   return (
@@ -49,13 +52,25 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-foreground mb-4">Contact</h3>
             <div className="space-y-3 text-sm">
-              <div className="flex items-start space-x-2">
-                <Mail size={16} className="text-primary mt-1 flex-shrink-0" />
-                <a href="mailto:info@solvixcore.com" className="text-foreground/70 hover:text-primary transition-colors">info@solvixcore.com</a>
+              <div
+                className="flex items-start space-x-2 cursor-pointer group"
+                onClick={() => {
+                  navigator.clipboard.writeText('info@solvixcore.com');
+                  toast.success('Email copied to clipboard!');
+                }}
+              >
+                <Mail size={16} className="text-primary mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-foreground/70 group-hover:text-primary transition-colors">info@solvixcore.com</span>
               </div>
-              <div className="flex items-start space-x-2">
-                <Phone size={16} className="text-primary mt-1 flex-shrink-0" />
-                <a href="https://wa.me/14378898265" className="text-foreground/70 hover:text-primary transition-colors">+1 (437) 889-8265</a>
+              <div
+                className="flex items-start space-x-2 cursor-pointer group"
+                onClick={() => {
+                  navigator.clipboard.writeText('+1 (437) 889-8265');
+                  toast.success('Phone number copied to clipboard!');
+                }}
+              >
+                <Phone size={16} className="text-primary mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-foreground/70 group-hover:text-primary transition-colors">+1 (437) 889-8265</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin size={16} className="text-primary mt-1 flex-shrink-0" />
