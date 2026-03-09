@@ -28,7 +28,7 @@ function isContactData(object: unknown): object is contactObject {
 export async function POST(req: NextRequest) {
     try {
         await connectDB();
-
+//learn about next adn express database connection difference
         const contactData = await req.json();
 
         if (!isContactData(contactData)) {
